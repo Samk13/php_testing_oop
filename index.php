@@ -1,56 +1,47 @@
 <?php
 
-class Team
+// Object Composition means: combining types to build more complex objects
+// it's when one class has a pointer into another class
+
+class Subscription
 {
     /**
-     *  @param $name
-     * @param $members
-     *
-     */
-    protected $name;
-    protected $members;
-    public function __construct($name, $members = [])
+     * @var \Gateway
+    */
+    protected Gateway $gatway;
+
+    public function __construct(Gateway $gatway)
     {
-        $this->name = $name;
-        $this->members = $members;
+        $this->gatway = $gatway;
     }
 
-    public static function start(...$params)
+    public function swap($newPlan)
     {
-        return new static(...$params);
+        //
     }
-
-    public function name()
-    {
-        return $this->name;
-    }
-    public function members()
-    {
-        return $this->members;
-    }
-    public function add($name)
-    {
-        $this->members[] = $name;
-    }
-    public function cancel()
+    protected function findStripCustomer($newPlan)
     {
         //
     }
 }
 
-class member
+interface Gateway
 {
-    protected $name;
-    public function __construct($name)
+    public function findCustomer();
+    public function findSubscriptionByCustomer();
+}
+
+class SripeGatway implements Gateway
+{
+    public function findCustomer()
     {
-        $this->name = $name;
+        //
+    }
+
+    public function findSubscriptionByCustomer()
+    {
+        //
     }
 }
 
-$acme = Team::start('Sam', [
-    new member('SamFriend'),
-    new member('SamFriend2'),
-    new member('SamFriend3'),
-]);
-
-var_dump($acme->members());
+new Subscription(new SripeGatway());
