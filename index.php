@@ -1,56 +1,41 @@
 <?php
 
-class Team
+abstract class AcheavmentType
 {
-    /**
-     *  @param $name
-     * @param $members
-     *
-     */
-    protected $name;
-    protected $members;
-    public function __construct($name, $members = [])
-    {
-        $this->name = $name;
-        $this->members = $members;
-    }
-
-    public static function start(...$params)
-    {
-        return new static(...$params);
-    }
-
     public function name()
     {
-        return $this->name;
+        // get the class name
+        $class = (new ReflectionClass($this))->getShortName();
+
+        // replace capital letters
+        return trim(preg_replace('/[A-Z]/', ' $0', $class));
     }
-    public function members()
+    public function icon()
     {
-        return $this->members;
+        return strtolower(str_replace(' ', '-', $this->name()) . '.png');
     }
-    public function add($name)
+    abstract public function qualifier($user);
+}
+
+
+class FirstThousandPoints extends AcheavmentType
+{
+    public function qualifier($user)
     {
-        $this->members[] = $name;
+        //
     }
-    public function cancel()
+}
+class FirstBestAnswer extends AcheavmentType
+{
+    public function qualifier($user)
     {
         //
     }
 }
 
-class member
-{
-    protected $name;
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-}
-
-$acme = Team::start('Sam', [
-    new member('SamFriend'),
-    new member('SamFriend2'),
-    new member('SamFriend3'),
-]);
-
-var_dump($acme->members());
+$achievement = new FirstBestAnswer();
+echo $achievement->name();
+echo '<br />';
+echo $achievement->icon();
+echo '<br />';
+echo $achievement->qualifier('usersss');
