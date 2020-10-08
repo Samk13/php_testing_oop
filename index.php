@@ -1,56 +1,75 @@
 <?php
 
-class Team
+class CoffeMaker
 {
-    /**
-     *  @param $name
-     * @param $members
-     *
-     */
-    protected $name;
-    protected $members;
-    public function __construct($name, $members = [])
+    public function brew()
     {
-        $this->name = $name;
-        $this->members = $members;
-    }
-
-    public static function start(...$params)
-    {
-        return new static(...$params);
-    }
-
-    public function name()
-    {
-        return $this->name;
-    }
-    public function members()
-    {
-        return $this->members;
-    }
-    public function add($name)
-    {
-        $this->members[] = $name;
-    }
-    public function cancel()
-    {
-        //
+        var_dump('brew caffe');
     }
 }
 
-class member
+class specialtyCoffeeMaker extends CoffeMaker
 {
-    protected $name;
-    public function __construct($name)
+    public function brewlatte()
     {
-        $this->name = $name;
+        var_dump('Latte caffe');
     }
 }
 
-$acme = Team::start('Sam', [
-    new member('SamFriend'),
-    new member('SamFriend2'),
-    new member('SamFriend3'),
+// (new specialtyCoffeeMaker())->brewlatte();
+// (new CoffeMaker())->brew();
+
+class Collection
+{
+    protected array $items;
+
+    public function __construct(array $items)
+    {
+        $this->items = $items;
+    }
+
+    public function sum($key)
+    {
+        // return array_sum(array_map(function ($item) use ($key) {
+        //     return $item->$key;
+        // }, $this->items));
+
+        // refactor the code above if you use php 7.4
+        // return array_sum(array_map(fn ($item) => $item->$key, $this->items));
+
+        // more elegent way is to remove array_map
+        return array_sum(array_column($this->items, $key));
+    }
+}
+
+// is a relationship
+
+class VideoCollection extends Collection
+{
+    public function length()
+    {
+        return $this->sum('length');
+    }
+}
+
+class Video
+{
+    public $title;
+    public $video;
+
+    public function __construct($title, $length)
+    {
+        $this->title = $title;
+        $this->length = $length;
+    }
+}
+
+$videos = new VideoCollection([
+    new Video('video1', 2000),
+    new Video('video2', 2001),
+    new Video('video3', 2002),
+    new Video('video4', 2003),
 ]);
 
-var_dump($acme->members());
+
+// echo $videos->length();
