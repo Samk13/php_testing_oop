@@ -1,56 +1,22 @@
 <?php
 
-class Team
+class TennisMatch
 {
-    /**
-     *  @param $name
-     * @param $members
-     *
-     */
-    protected $name;
-    protected $members;
-    public function __construct($name, $members = [])
-    {
-        $this->name = $name;
-        $this->members = $members;
-    }
+    public $name;
 
-    public static function start(...$params)
-    {
-        return new static(...$params);
-    }
-
-    public function name()
-    {
-        return $this->name;
-    }
-    public function members()
-    {
-        return $this->members;
-    }
-    public function add($name)
-    {
-        $this->members[] = $name;
-    }
-    public function cancel()
-    {
-        //
-    }
-}
-
-class member
-{
-    protected $name;
     public function __construct($name)
     {
         $this->name = $name;
     }
+    public function thingsThatShouldBePrivate()
+    {
+        echo 'The Private things that we should keep it private.🤐';
+    }
 }
 
-$acme = Team::start('Sam', [
-    new member('SamFriend'),
-    new member('SamFriend2'),
-    new member('SamFriend3'),
-]);
+// how to get a  private function
 
-var_dump($acme->members());
+$method = new \ReflectionMethod(Person::class, 'thingsThatShouldBePrivate');
+$method->setAccessible(true);
+$person = new Person('Sam');
+$method->invoke($person);
