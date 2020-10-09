@@ -1,56 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam test</title>
+    <style>
+    header {
+        background: #e3e3e3;
+        padding: 2em;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Hello World from html</h1>
+    <h1><?= "Hello, " . htmlspecialchars($_GET['name']); ?></h1>
+</header>
 
-class Team
-{
-    /**
-     *  @param $name
-     * @param $members
-     *
-     */
-    protected $name;
-    protected $members;
-    public function __construct($name, $members = [])
-    {
-        $this->name = $name;
-        $this->members = $members;
-    }
-
-    public static function start(...$params)
-    {
-        return new static(...$params);
-    }
-
-    public function name()
-    {
-        return $this->name;
-    }
-    public function members()
-    {
-        return $this->members;
-    }
-    public function add($name)
-    {
-        $this->members[] = $name;
-    }
-    public function cancel()
-    {
-        //
-    }
-}
-
-class member
-{
-    protected $name;
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-}
-
-$acme = Team::start('Sam', [
-    new member('SamFriend'),
-    new member('SamFriend2'),
-    new member('SamFriend3'),
-]);
-
-var_dump($acme->members());
+</body>
+</html>
