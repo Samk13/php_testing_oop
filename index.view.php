@@ -14,7 +14,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-800 text-gray-900">
-    <header class="container mx-auto text-center bg-orange-500 p-2 mt-10 rounded-lg">
+    <header class="container mx-auto text-center bg-orange-400 p-2 mt-10 rounded-lg">
         <h1 class="text-4xl font-bold mb-5"> Testin with PHP</h1>
         <table class="table-auto w-full">
             <tr>
@@ -33,9 +33,16 @@
                     <?= $task['assigned_to']; ?>
                 </td>
                 <td>
-                    <?= $task['completed'] ? 'Completed':'Not completed'; ?>
+                    <!-- <?= $task['completed'] ? 'Completed':'Not completed'; ?> -->
+                    <?php
+                    if($task['completed']) :?>
+                        <span class="text-4xl bg-white w-full rounded-lg">&#9989;</span>
+                    <?php else  :?>
+                        <span class="text-4xl bg-white w-full rounded-lg">&#10060;</span>
+                   <?php endif ?>
                 </td>
             </table>
+
     </header>
 </body>
 </html>
