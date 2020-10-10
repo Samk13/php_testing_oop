@@ -23,3 +23,21 @@ function allowed_age($age) {
         echo $result;
     }
 }
+
+function db_connect()
+{
+    try {
+        return new PDO('mysql:host=127.0.0.1;dbname=mytodo','root', '');
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
+function fetchAllTasks($db)
+{
+    $statment = $db->prepare('select * from todos');
+
+    $statment->execute();
+
+    return $statment->fetchAll(PDO::FETCH_CLASS, 'Task');
+}

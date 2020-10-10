@@ -1,15 +1,13 @@
 <?php
-
-
 class Task
 {
     protected $description;
     protected $completed;
 
-    public function __construct($description)
+    public function __construct()
     {
         // automatically triggered
-        $this->description = $description;
+        $this->description ;
         $this->completed = false;
 
     }
@@ -34,15 +32,3 @@ class Task
     }
 
 }
-
-$task = new Task('go to the gym');
-
-$tasks = [
-    new Task('Go to the store 😀'),
-    new Task('code as fuck 😁'),
-    new Task('code more as duck 😂'),
-    new Task('fuck as fuck 🤣'),
-];
-
-$tasks[2]->set_completed();
-// var_dump($task->complete());
