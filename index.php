@@ -1,10 +1,5 @@
 <?php
 
-$task =[
-    'title' => 'Finish homework',
-    'due' => 'today',
-    'assigned_to' => 'Sam',
-    'completed' => false,
-];
-
+require  'data.php';
+require  'functions.php';
 require 'index.view.php';

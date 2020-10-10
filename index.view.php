@@ -36,12 +36,25 @@
                     <!-- <?= $task['completed'] ? 'Completed':'Not completed'; ?> -->
                     <?php
                     if($task['completed']) :?>
-                        <span class="text-4xl bg-white w-full rounded-lg">&#9989;</span>
+                        <span class="text-xl">&#9989;</span>
                     <?php else  :?>
-                        <span class="text-4xl bg-white w-full rounded-lg">&#10060;</span>
+                        <span class="text-xl">&#10060;</span>
                    <?php endif ?>
                 </td>
             </table>
+            <div class="p-5 m-5 rounded-lg text-left font-mono text-lg bg-gray-800 text-white">
+                <?php
+                dd($task);
+
+                ?>
+            </div>
+            <div>
+            <form action="" method="get" >
+            <input type="text" name="age">
+            <input type="submit">
+            </form>
+            <div><?= $result; ?></div>
+            </div>
 
     </header>
 </body>
