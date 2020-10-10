@@ -8,7 +8,7 @@ class Task
     {
         // automatically triggered
         $this->description ;
-        $this->completed = false;
+        $this->completed;
 
     }
 

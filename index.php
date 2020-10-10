@@ -1,7 +1,7 @@
 <?php
+$query = require "bootstrap.php";
+require "classes.php";
 
-require  'data.php';
-require  'functions.php';
-require  'classes.php';
-require  'db.php';
+$tasks = $query->selectAll('todos', 'Task');
+
 require 'index.view.php';
