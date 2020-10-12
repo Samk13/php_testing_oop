@@ -13,5 +13,8 @@
         <li class="mr-6 hover:bg-blue-800 hover:text-white p-5">
             <a href="/about/culture">Culture</a>
         </li>
+        <li class="mr-6 hover:bg-blue-800 hover:text-white p-5">
+            <a href="/users">Users</a>
+        </li>
     </ul>
 </nav>
