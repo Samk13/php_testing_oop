@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Core;
+use PDO;
+use PDOException;
 class Connection
 {
     public static function make($config)

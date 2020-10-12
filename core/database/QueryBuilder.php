@@ -1,5 +1,7 @@
 <?php
-
+namespace App\Core;
+use PDO;
+use Exception;
 class Task
 {
     protected $description;
