@@ -6,9 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App' => $baseDir . '/core/app.php',
+    'ComposerAutoloaderInit69489323c380d75477cfe5e8b050b3cb' => $vendorDir . '/composer/autoload_real.php',
+    'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
+    'Composer\\Autoload\\ComposerStaticInit69489323c380d75477cfe5e8b050b3cb' => $vendorDir . '/composer/autoload_static.php',
     'Connection' => $baseDir . '/core/database/Connections.php',
+    'PagesController' => $baseDir . '/controllers/PagesController.php',
     'QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'Request' => $baseDir . '/core/database/Request.php',
     'Router' => $baseDir . '/core/router/router.php',
     'Task' => $baseDir . '/core/database/QueryBuilder.php',
+    'UsersController' => $baseDir . '/controllers/UsersController.php',
 );
